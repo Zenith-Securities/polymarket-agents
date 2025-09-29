@@ -162,6 +162,17 @@ Retrieve and display a list of markets from Polymarket, sorted by volume.
 - limit: The number of markets to retrieve (default: 5).
 - sort_by: The sorting criterion, either volume (default) or another valid attribute.
 
+`query-local-markets-rag`
+Search the locally cached Polymarket markets using vector similarity.
+
+   ```
+   python scripts/python/cli.py create-local-markets-rag ./local_rag_db
+   python scripts/python/cli.py query-local-markets-rag ./local_rag_db "Which markets mention crypto prices"
+   ```
+
+- `create-local-markets-rag` builds the Chroma database in the specified directory (run once or whenever you want to refresh the data).
+- `query-local-markets-rag` loads that directory and returns the closest matching market descriptions for the query text.
+
 # Contributing
 
 If you would like to contribute to this project, please follow these steps:
