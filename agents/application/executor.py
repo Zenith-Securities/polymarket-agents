@@ -29,15 +29,15 @@ def retain_keys(data, keys_to_retain):
         return data
 
 class Executor:
-    def __init__(self, default_model='gpt-3.5-turbo-16k') -> None:
+    def __init__(self, default_model='gpt-5-2025-08-07') -> None:
         load_dotenv()
-        max_token_model = {'gpt-3.5-turbo-16k':15000, 'gpt-4-1106-preview':95000}
+        max_token_model = {'gpt-5-2025-08-07':95000, 'gpt-4-1106-preview':95000}
         self.token_limit = max_token_model.get(default_model)
         self.prompter = Prompter()
         self.openai_api_key = os.getenv("OPENAI_API_KEY")
         self.llm = ChatOpenAI(
             model=default_model, #gpt-3.5-turbo"
-            temperature=0,
+            # temperature=0,
         )
         self.gamma = Gamma()
         self.chroma = Chroma()
