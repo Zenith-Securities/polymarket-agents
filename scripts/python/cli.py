@@ -1,5 +1,13 @@
+import sys
+from pathlib import Path
+
 import typer
 from devtools import pprint
+
+# Ensure project root is importable when running as a script.
+ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 from agents.polymarket.polymarket import Polymarket
 from agents.connectors.chroma import PolymarketRAG
